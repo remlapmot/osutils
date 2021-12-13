@@ -26,7 +26,7 @@ sample_random_n <- function(id, n){
   dplyr::dense_rank(id) <= n
 }
 
-#sample_random_n(c(1,2,3,4,5,6), 7)
+
 
 
 #' Sample a proportion of patients (or other observational units) based on patient IDs.
@@ -52,7 +52,7 @@ sample_random_prop <- function(id, proportion){
 
   dplyr::dense_rank(id) <= ceiling(length(id)*proportion)
 }
-#sample_random_prop(c(1,2,3,4,5,6), 0.3)
+
 
 
 
@@ -90,7 +90,7 @@ sample_nonoutcomes_n <- function(had_outcome, id, n){
   else {  (dplyr::dense_rank(dplyr::if_else(had_outcome, 0L, id)) - 1L) <= n}
 
 }
-# sample_nonoutcomes_n(c(0,0,0,0,1,1), c(1L,2L,3L,4L,5L,6L), 6)
+
 
 
 #' Sample patients (or other observational units) based on patient IDs, depending on occurrence of an event or not
@@ -120,8 +120,6 @@ sample_nonoutcomes_prop <- function(had_outcome, id, proportion){
 
   (dplyr::dense_rank(dplyr::if_else(had_outcome, 0L, id)) - 1L) <= ceiling(sum(!had_outcome)*proportion)
 }
-#sample_nonoutcomes_prop(c(0,0,0,0,1,1), c(1L,2L,3L,4L,5L,6L), 0.74)
-
 
 
 #' Derive sampling probabilities
