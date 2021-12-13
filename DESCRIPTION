@@ -1,15 +1,26 @@
 Package: osutils
-Title: What the Package Does (One Line, Title Case)
+Title: Useful functions for OpenSAFELY
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "William",
+           family = "Hulme",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+           email = "william.hulme@phc.ox.ac.uk",
+           comment = c(ORCID = "0000-0002-9162-4999"))
+Description: Contains functions that are often needed when using the OpenSAFELY platform, such as redaction and low-memory processing.
 License: MIT + file LICENSE
+Imports: 
+    stats,
+    rlang,
+    tibble,
+    dplyr,
+    tidyr,
+    tidyselect,
+    forcats
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
