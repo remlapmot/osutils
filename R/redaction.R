@@ -1,6 +1,5 @@
 # Functions for redacting vectors ----
 
-
 #' Indicates which values to redact from a vector of frequencies
 #'
 #' @param n A vector of integer frequencies or counts from a 1-dimension frequency distribution.
@@ -256,14 +255,11 @@ redacted_summary_catcat <- function(
 #' @param threshold The redaction threshold. If the length of `x` is less than or equal to this threshold, then no summary values will be reported.
 #' @param .redacted_name The string used to replace redacted values.
 #' @return A table of summary statistics for the variable.
-#'
 #' @details This function takes a numeric vector (or something that can be coerced to one), and summarises it. Summary statistics are redacted according to the rules in \code{\link{redactor}}.
-#'
 #' @export
 redacted_summary_num <- function(x, threshold=5L, .redacted_name="redacted"){
 
   # TODO add custom_function argument that takes a list of formulas and appends to `summary_fns`.
-
 
   stopifnot("threshold must be a scalar" = length(threshold) == 1L)
   stopifnot("non-integer value passed to threshold" = threshold%%1 == 0L)
@@ -434,8 +430,244 @@ redacted_summary_catnum <- function(
 }
 
 
+# functions to convert redacted sumary tables to gt objects ----
 
 
+#' Convert output of categorical tabulation (redact_summary_cat) to gt object
+#'
+#' @param x The data.frame produced by `redact_summary_cat`
+#' @param var_name The variable name
+#' @param pct_decimals Decimal precision for percentages
+#' @return A gt object
+#'
+#' @details This function takes the output of `redact_summary_cat` and converts it to a gt object (as from the `gt` package) for outputting to html/pdf.
+#'
+#' @export
+gt_cat <- function(
+  x,
+  var_name="",
+  pct_decimals = 1
+){
+
+  x %>%
+    dplyr::select(-c(redacted)) %>%
+    gt::gt() %>%
+    gt::fmt_percent(
+      columns = tidyselect::ends_with(c("prop", "prop_nonmiss")),
+      decimals = pct_deminals
+    ) %>%
+    gt::fmt_missing(
+      tidyselect::everything(),
+      missing_text="--"
+    ) %>%
+    gt::tab_spanner(
+      label = "non-missing",
+      columns = dplyr::vars("n_nonmiss", "prop_nonmiss")
+    ) %>%
+    gt::cols_label(
+      .level=var_name,
+      n = "N",
+      n_nonmiss = "N",
+      prop = "%",
+      prop_nonmiss = "%",
+    ) %>%
+    gt::cols_align(
+      align = "left",
+      columns = dplyr::vars(.level)
+    )
+}
+
+
+#' Convert output of categorical cross-tabulation (redact_summary_cat_cat) to gt object
+#'
+#' @param x The data.frame produced by `redact_summary_catcat`
+#' @param var1_name The name of the first categorical variable
+#' @param var2_name The name of the second categorical variable
+#' @param title The title of the table
+#' @param source_note A footnote
+#' @param pct_decimals Decimal precision for percentages
+#' @return A gt object
+#'
+#' @details This function takes the output of `redact_summary_catcat` and converts it to a gt object (as from the `gt` package) for outputting to html/pdf.
+#'
+#' @export
+gt_catcat <- function(
+  x,
+  var1_name="",
+  var2_name="",
+  title = NULL,
+  source_note = NULL,
+  pct_decimals = 1
+){
+
+  summary_wide <- x %>%
+    dplyr::arrange(.level2) %>%
+    tidyr::pivot_wider(
+      id_cols=c(.level1),
+      values_from=c(n, prop),
+      names_from=.level2,
+      names_glue="{.level2}__{.value}"
+    )
+
+  col_selector <- levels(summary_catcat$.level2)
+
+  old_names <- summary_wide %>% dplyr::select(-.level1) %>% names()
+
+  col_renamer <- old_names %>%
+    rlang::set_names(
+      . %>%
+        #str_replace("__n", str_c("__","N")) %>%
+        stringr::str_replace("__prop", stringr::str_c("__","%"))
+    )
+
+  gt_table <- summary_wide %>%
+    dplyr::rename(!!!col_renamer) %>%
+    dplyr::select(.level1, tidyselect::starts_with(paste0(col_selector, "__"))) %>%
+    # select step needed because https://github.com/tidyverse/tidyr/issues/839#issuecomment-622073209 -- need
+    # use until `gather` option for tab_spanner_delim works
+    gt::gt() %>%
+    gt::tab_spanner_delim(delim="__", gather=TRUE) %>%
+    # gather doesn't work!
+    gt::fmt_percent(
+      columns = tidyselect::ends_with(c("%")),
+      decimals = pct_decimals
+    ) %>%
+    gt::fmt_missing(tidyselect::everything(),
+                missing_text="-"
+    ) %>%
+    gt::cols_label(
+      .level1=var1_name
+    ) %>%
+    gt::cols_align(
+      align = "left",
+      columns = dplyr::vars(.level1)
+    )
+
+  if(!is.null(title)){
+    gt_table <- gt::tab_header(gt_table, title = title)
+  }
+
+  if(!is.null(source_note)){
+    gt_table <- gt::tab_source_note(gt_table, source_note = source_note)
+  }
+
+  gt_table
+  ## TODO, add labels, change column headers, redaction label
+}
+
+
+
+#' Convert output of numeric tabulation (redact_summary_num) to gt object
+#'
+#' @param x The data.frame produced by `redact_summary_num`
+#' @param var_name The variable name
+#' @param num_decimals Decimal precision for numbers
+#' @param pct_decimals Decimal precision for percentages
+#' @return A gt object
+#'
+#' @details This function takes the output of `redact_summary_num` and converts it to a gt object (as from the `gt` package) for outputting to html/pdf.
+#'
+#' @export
+gt_num <- function(
+  x,
+  var_name="",
+  num_decimals=1,
+  pct_decimals=1
+){
+
+  x %>%
+    dplyr::select(-c(n_miss, prop_miss, redacted)) %>%
+    gt::gt() %>%
+    gt::fmt_percent(
+      columns = tidyselect::ends_with(c("prop_nonmiss", "prop_miss")),
+      decimals = pct_deminals
+    ) %>%
+    gt::fmt_number(
+      columns = dplyr::vars("mean", "sd", "min", "p10", "p25", "p50", "p75", "p90", "max"),
+      decimals = num_decimals
+    ) %>%
+    gt::fmt_missing(
+      tidyselect::everything(),
+      missing_text="--"
+    ) %>%
+    gt::tab_spanner(
+      label = "non-missing",
+      columns = dplyr::vars("n_nonmiss", "prop_nonmiss")
+    ) %>%
+    gt::tab_spanner(
+      label = "percentiles",
+      columns = dplyr::vars("min", "p10", "p25", "p50", "p75", "p90", "max")
+    ) %>%
+    gt::cols_label(
+      n = "N",
+      n_nonmiss = "N",
+      prop_nonmiss = "%",
+      mean = "mean",
+      sd = "SD",
+      min = "min",
+      unique = "unique values"
+    )
+}
+
+
+#' Convert output of categorical-numeric cross-tabulation (redact_summary_catnum) to gt object
+#'
+#' @param x The data.frame produced by `redact_summary_catnum`
+#' @param cat_name The categorical variable name
+#' @param num_name The numeric variable name
+#' @param num_decimals Decimal precision for numbers
+#' @param pct_decimals Decimal precision for percentages
+#' @return A gt object
+#'
+#' @details This function takes the output of `redact_summary_catnum` and converts it to a gt object (as from the `gt` package) for outputting to html/pdf.
+#'
+#' @export
+gt_catnum <- function(
+  x,
+  cat_name="",
+  num_name="",
+  num_decimals=1,
+  pct_decimals=1
+){
+
+  x %>%
+    dplyr::select(-c(n_miss, prop_miss, redacted)) %>%
+    gt::gt(groupname_col=variable_num) %>%
+    gt::fmt_percent(
+      columns = tidyselect::ends_with(c("prop_nonmiss", "prop_miss")),
+      decimals = pct_deminals
+    ) %>%
+    gt::fmt_number(
+      columns = dplyr::vars("mean", "sd", "min", "p10", "p25", "p50", "p75", "p90", "max"),
+      decimals = num_decimals
+    ) %>%
+    gt::fmt_missing(
+      tidyselect::everything(),
+      missing_text="--"
+    ) %>%
+    gt::tab_spanner(
+      label = "non-missing",
+      columns = dplyr::vars("n_nonmiss", "prop_nonmiss")
+    ) %>%
+    gt::tab_spanner(
+      label = "percentiles",
+      columns = dplyr::vars("min", "p10", "p25", "p50", "p75", "p90", "max")
+    ) %>%
+    gt::cols_label(
+      .variable_cat=cat_name,
+      n = "N",
+      n_nonmiss = "N",
+      prop_nonmiss = "%",
+      mean = "mean",
+      sd = "SD",
+      min = "min",
+      unique = "unique values"
+    ) %>%
+    gt::cols_align(
+      align = "left",
+      columns = dplyr::vars(.variable_cat)
+    )
+}
 
 
 

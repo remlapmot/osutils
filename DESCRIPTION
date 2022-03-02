@@ -16,7 +16,9 @@ Imports:
     dplyr,
     tidyr,
     tidyselect,
-    forcats
+    stringr,
+    forcats,
+    gt,
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
