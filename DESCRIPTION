@@ -18,6 +18,8 @@ Imports:
     tidyselect,
     stringr,
     forcats,
+    broom,
+    plyr,
     gt,
     jsonlite
 Encoding: UTF-8
