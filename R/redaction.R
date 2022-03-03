@@ -782,16 +782,14 @@ ceiling_any <- function(x, to=1){
 #' @param threshold Redact threshold to apply
 #' @return A tibble with rounded numbers of at risk, events, censored, and derived survival estimates, by strata
 #'
-#' @details  This function rounds Kaplan-Meier survival function estimates by delaying events times until at least `threshold` events have occurs.
+#' @details  This function rounds Kaplan-Meier survival estimates by delaying events times until at least `threshold` events have occurred.
 #'
 #' @export
 
-round_km <- function(data, time, event, strata, threshold=6){
+round_km <- function(data, time, event, strata=NULL, threshold=6){
 
   stopifnot("Missing values not allow in `time`" = all(!is.na(data[[time]])))
   stopifnot("Missing values not allow in `event`" = all(!is.na(data[[event]])))
-
-
 
   dat_surv <-
     data %>%

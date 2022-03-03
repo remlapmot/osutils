@@ -4,7 +4,7 @@
 \alias{round_km}
 \title{Rounded Kaplan-Meier curves}
 \usage{
-round_km(data, time, event, strata, threshold = 6)
+round_km(data, time, event, strata = NULL, threshold = 6)
 }
 \arguments{
 \item{data}{A data frame containing the required survival times}
@@ -24,5 +24,5 @@ A tibble with rounded numbers of at risk, events, censored, and derived survival
 Rounded Kaplan-Meier curves
 }
 \details{
-This function rounds Kaplan-Meier survival function estimates by delaying events times until at least \code{threshold} events have occurs.
+This function rounds Kaplan-Meier survival estimates by delaying events times until at least \code{threshold} events have occurred.
 }
