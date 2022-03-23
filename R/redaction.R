@@ -793,24 +793,24 @@ round_km <- function(data, time, event, strata=NULL, threshold=6){
 
   dat_surv <-
     data %>%
-    select(all_of(c(time, event, strata))) %>%
-    rename(time={{ time }}, event = {{ event }}) %>%
-    group_by(across(all_of(strata))) %>%
-    nest() %>%
-    mutate(
-      n_events = map_int(data, ~sum(.x[[event]], na.rm=TRUE)),
-      surv_obj = map(data, ~{
+    dplyr::select(tidyselect::all_of(c(time, event, strata))) %>%
+    dplyr::rename(time={{ time }}, event = {{ event }}) %>%
+    dplyr::group_by(dplyr::across(tidyselect::all_of(strata))) %>%
+    tidyr::nest() %>%
+    dplyr::mutate(
+      n_events = purrr::map_int(data, ~sum(.x[[event]], na.rm=TRUE)),
+      surv_obj = purrr::map(data, ~{
         survfit(Surv(time, event) ~ 1, data = .x, conf.type="log-log")
       }),
-      surv_obj_tidy = map(surv_obj, ~broom::tidy(.x)),
+      surv_obj_tidy = purrr::map(surv_obj, ~broom::tidy(.x)),
     ) %>%
-    select(strata, n_events, surv_obj_tidy) %>%
-    unnest(surv_obj_tidy)
+    dplyr::select(strata, n_events, surv_obj_tidy) %>%
+    tidyr::unnest(surv_obj_tidy)
 
 
   dat_surv_rounded <-
     dat_surv %>%
-    mutate(
+    dplyr::mutate(
       # Use ceiling not round. This is slightly biased upwards,
       # but means there's no disclosure risk at the boundaries (0 and 1) where masking would otherwise be threshold/2
       surv = ceiling_any(estimate, 1/floor(max(n.risk, na.rm=TRUE)/(threshold))),
@@ -822,7 +822,7 @@ round_km <- function(data, time, event, strata=NULL, threshold=6){
       n.censor = c(NA, diff(cml.censor)),
       n.risk = ceiling_any(max(n.risk, na.rm=TRUE), threshold) - (cml.event + cml.censor)
     ) %>%
-    select(all_of(strata), time, surv, surv.ll, surv.ul, n.risk, n.event, n.censor)
+    dplyr::select(tidyselect::all_of(strata), time, surv, surv.ll, surv.ul, n.risk, n.event, n.censor)
 
 
   dat_surv_rounded
