@@ -12,10 +12,13 @@ License: MIT + file LICENSE
 Imports: 
     stats,
     rlang,
+    fs,
+    readr,
     tibble,
     dplyr,
     tidyr,
     tidyselect,
+    purrr,
     stringr,
     forcats,
     broom,
