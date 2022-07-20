@@ -2,7 +2,7 @@
 % Please edit documentation in R/saving.R
 \name{writetype_csv}
 \alias{writetype_csv}
-\title{Write a data frame to a csv file, and save typing information in a separate json file.}
+\title{Write a data frame to a csv file, and save typing information in a separate json file}
 \usage{
 writetype_csv(
   x,
@@ -30,7 +30,7 @@ writetype_csv(
 Returns the input invisibly.
 }
 \description{
-Write a data frame to a csv file, and save typing information in a separate json file.
+Write a data frame to a csv file, and save typing information in a separate json file
 }
 \details{
 Based on the \link[readr:write_delim]{readr::write_delim} function.

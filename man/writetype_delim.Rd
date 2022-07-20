@@ -2,7 +2,7 @@
 % Please edit documentation in R/saving.R
 \name{writetype_delim}
 \alias{writetype_delim}
-\title{Write a data frame to a delimited file, and save typing information in a separate json file.}
+\title{Write a data frame to a delimited file, and save typing information in a separate json file}
 \usage{
 writetype_delim(
   x,
@@ -33,7 +33,7 @@ writetype_delim(
 Returns the input invisibly.
 }
 \description{
-Write a data frame to a delimited file, and save typing information in a separate json file.
+Write a data frame to a delimited file, and save typing information in a separate json file
 }
 \details{
 Based on the \link[readr:write_delim]{readr::write_delim} function.

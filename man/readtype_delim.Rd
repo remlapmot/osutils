@@ -2,7 +2,7 @@
 % Please edit documentation in R/saving.R
 \name{readtype_delim}
 \alias{readtype_delim}
-\title{Read a delimited file (including CSV and TSV) into a tibble, and type columns using a separate json file.}
+\title{Read a delimited file (including CSV and TSV) into a tibble, and type columns using a separate json file}
 \usage{
 readtype_delim(
   file,
@@ -59,7 +59,7 @@ each field before parsing it?}
 A \code{\link[=tibble]{tibble()}}.
 }
 \description{
-Read a delimited file (including CSV and TSV) into a tibble, and type columns using a separate json file.
+Read a delimited file (including CSV and TSV) into a tibble, and type columns using a separate json file
 }
 \details{
 Based on the \link[readr:read_delim]{readr::read_delim} function. Requires delimited files to be saved using \link{writetype_delim}, which will also create the json file containing the typing info.
