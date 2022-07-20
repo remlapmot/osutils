@@ -174,9 +174,9 @@ readtype_delim <- function(
 #' Read a csv file into a tibble, and type columns using a separate json file
 #'
 #' @param file Delimited file location.
-#' @param suffix #' @param suffix The suffix used in the name of the json file, which is appended to the delimited file name. Defaults to `""` (no suffix), so that the file name is the same as the delimited file name (excluding filetype extensions).
 #' @details Based on the readr::read_csv function. Requires csv  files to be saved using osutils::write_csv, which will also create the json file containing the typing info.
 #'  See readr::read_csv for additional parameter details
+#' @param suffix The suffix used in the name of the json file, which is appended to the delimited file name. Defaults to `""` (no suffix), so that the file name is the same as the delimited file name (excluding filetype extensions).
 #'  Datetime and time classes are not supported.
 #' @export
 
