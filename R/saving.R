@@ -115,6 +115,29 @@ writetype_csv <- function(
 #'
 #' @param file Delimited file location.
 #' @param suffix The suffix used in the name of the json file, which is appended to the delimited file name. Defaults to `""` (no suffix), so that the file name is the same as the delimited file name (excluding filetype extensions).
+#' @param locale The locale controls defaults that vary from place to place.
+#'   The default locale is US-centric (like R), but you can use
+#'   [locale()] to create your own locale that controls things like
+#'   the default time zone, encoding, decimal mark, big mark, and day/month
+#'   names.
+#' @param na Character vector of strings to interpret as missing values. Set this
+#'   option to `character()` to indicate no missing values.
+#' @param quoted_na `r lifecycle::badge("deprecated")` Should missing values
+#'   inside quotes be treated as missing values (the default) or strings. This
+#'   parameter is soft deprecated as of readr 2.0.0.
+#' @param delim Single character used to separate fields within a record.
+#' @param quote Single character used to quote strings.
+#' @param trim_ws Should leading and trailing whitespace (ASCII spaces and tabs) be trimmed from
+#'     each field before parsing it?
+#' @param comment A string used to identify comments. Any text after the
+#'   comment characters will be silently ignored.
+#' @param escape_double Does the file escape quotes by doubling them?
+#'   i.e. If this option is `TRUE`, the value `""""` represents
+#'   a single quote, `\"`.
+#' @param escape_backslash Does the file use backslashes to escape special
+#'   characters? This is more general than `escape_double` as backslashes
+#'   can be used to escape the delimiter character, the quote character, or
+#'   to add special characters like `\\n`.
 #' @details Based on the [readr::read_delim] function. Requires delimited files to be saved using [osutils::writetype_delim], which will also create the json file containing the typing info.
 #'  Datetime and time classes are not supported.
 #' @export
@@ -176,6 +199,7 @@ readtype_delim <- function(
 #' @param suffix The suffix used in the name of the json file, which is appended to the delimited file name. Defaults to `""` (no suffix), so that the file name is the same as the delimited file name (excluding filetype extensions).
 #' @details Based on the [readr::read_csv] function. Requires csv files to be saved using [osutils::writetype_csv], which will also create the json file containing the typing info.
 #'  Datetime and time classes are not supported.
+#' @inheritParams readtype_delim
 #' @export
 
 readtype_csv <- function(
