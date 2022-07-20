@@ -8,7 +8,8 @@ Authors@R: c(
            comment = c(ORCID = "0000-0003-4655-4511"))
   )
 Description: Contains functions that are often needed when using the
-    OpenSAFELY platform, such as redaction and low-memory processing.
+    OpenSAFELY platform <https://www.opensafely.org/>, such as redaction
+    and low-memory processing.
 License: MIT + file LICENSE
 URL: https://github.com/wjchulme/osutils
 BugReports: https://github.com/wjchulme/osutils/issues/
