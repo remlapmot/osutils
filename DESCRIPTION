@@ -1,5 +1,5 @@
 Package: osutils
-Title: Useful functions for OpenSAFELY
+Title: Useful Functions for OpenSAFELY
 Version: 0.0.0.9000
 Authors@R: 
     person("William", "Hulme", , "william.hulme@phc.ox.ac.uk", role = c("aut", "cre"),
