@@ -374,7 +374,7 @@ redacted_summary_date <- function(x, threshold=5L, .redacted_name="redacted"){
 #' @param threshold The redaction threshold. If the length of `x` is less than or equal to this threshold, then no summary values will be reported.
 #' @param .missing_name The string used to replace `NA` categories.
 #' @param .redacted_name The string used to replace redacted values.
-#' @return A table of summary statistics for the numeric variable, stratified by the cateogrical variable
+#' @return A table of summary statistics for the numeric variable, stratified by the categorical variable
 #'
 #' @details This function takes a categorical vector and a numeric vector of the same length, and performs a cross-tabulation. Summary statistics are redacted according to the rules in \code{\link{redactor}}.
 #'
