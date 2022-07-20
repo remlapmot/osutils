@@ -7,7 +7,7 @@
 #' @param path File or connection to write to. (path is now deprecated in readr v1.4 for OpenSAFELY currently has older version, so use path for now)
 #' @param suffix The suffix used in the name of the json file, to be appended to the delimited file name. Defaults to `""` (no suffix), so that the file name is the same as the delimited file name (excluding filetype extensions).
 #' @param delim Delimiter used to separate values.
-#' @param na String used for missing values. Defaults to NA. Missing values will never be quoted; strings with the same value as na will always be quoted.
+#' @param na String used for missing values. Defaults to `"NA"`. Missing values will never be quoted; strings with the same value as `na` will always be quoted.
 #' @param quote_escape The type of escaping to use for quoted values, one of "`double`", "`backslash`" or "`none`". You can also use `FALSE`, which is equivalent to "`none`". The default is "`double`", which is expected format for Excel.
 #' @param eol The end of line character to use. Most commonly either "`\n`" for Unix style newlines, or "`\r\n`" for Windows style newlines.
 #' @return Returns the input invisibly.
@@ -78,7 +78,7 @@ writetype_delim <- function(
 #' @param x A data frame or tibble to write to disk.
 #' @param path File or connection to write to. (path is now deprecated in readr v1.4 for OpenSAFELY currently has older version, so use path for now).
 #' @param suffix The suffix used in the name of the json file, to be appended to the delimited file name. Defaults to `""` (no suffix), so that the file name is the same as the delimited file name (excluding filetype extensions).
-#' @param na String used for missing values. Defaults to NA. Missing values will never be quoted; strings with the same value as na will always be quoted.
+#' @param na String used for missing values. Defaults to `"NA"`. Missing values will never be quoted; strings with the same value as `na` will always be quoted.
 #' @param quote_escape The type of escaping to use for quoted values, one of "`double`", "`backslash`" or "`none`". You can also use `FALSE`, which is equivalent to "`none`". The default is "`double`", which is expected format for Excel.
 #' @param eol The end of line character to use. Most commonly either "`\n`" for Unix style newlines, or "`\r\n`" for Windows style newlines.
 #' @return Returns the input invisibly.
