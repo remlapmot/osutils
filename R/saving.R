@@ -116,7 +116,6 @@ writetype_csv <- function(
 #' @param file Delimited file location.
 #' @param suffix The suffix used in the name of the json file, which is appended to the delimited file name. Defaults to `""` (no suffix), so that the file name is the same as the delimited file name (excluding filetype extensions).
 #' @details Based on the [readr::read_delim] function. Requires delimited files to be saved using [osutils::writetype_delim], which will also create the json file containing the typing info.
-#'  See [readr::read_delim] for additional parameter details
 #'  Datetime and time classes are not supported.
 #' @export
 
@@ -176,7 +175,6 @@ readtype_delim <- function(
 #' @param file Delimited file location.
 #' @param suffix The suffix used in the name of the json file, which is appended to the delimited file name. Defaults to `""` (no suffix), so that the file name is the same as the delimited file name (excluding filetype extensions).
 #' @details Based on the [readr::read_csv] function. Requires csv files to be saved using [osutils::writetype_csv], which will also create the json file containing the typing info.
-#'  See [readr::read_csv] for additional parameter details
 #'  Datetime and time classes are not supported.
 #' @export
 
