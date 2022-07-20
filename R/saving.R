@@ -83,7 +83,7 @@ writetype_delim <- function(
 #' @param eol The end of line character to use. Most commonly either "`\n`" for Unix style newlines, or "`\r\n`" for Windows style newlines.
 #' @return Returns the input invisibly
 #'
-#' @details Based on the readr::write_delim function.
+#' @details Based on the [readr::write_delim] function.
 #'  Additionally, this function saves a json file containing typing info for the data frame,
 #'  which can be used to re-type the data when re-imported into R.
 #'  Datetime and time classes are not supported.
