@@ -15,7 +15,7 @@
 #' @details Based on the [readr::write_delim] function.
 #'  Additionally, this function saves a json file containing typing info for the data frame,
 #'  which can be used to re-type the data when re-imported into R.
-#'  Some further read_delim options are deliberately unavailable as they won't make sense for files intended for re-importing.
+#'  Some further [readr::write_delim] options are deliberately unavailable as they won't make sense for files intended for re-importing.
 #'  Datetime and time classes are not supported.
 #' @export
 
