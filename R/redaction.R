@@ -454,7 +454,7 @@ gt_cat <- function(
     gt::gt() %>%
     gt::fmt_percent(
       columns = tidyselect::ends_with(c("prop", "prop_nonmiss")),
-      decimals = pct_deminals
+      decimals = pct_decimals
     ) %>%
     gt::fmt_missing(
       tidyselect::everything(),
@@ -580,7 +580,7 @@ gt_num <- function(
     gt::gt() %>%
     gt::fmt_percent(
       columns = tidyselect::ends_with(c("prop_nonmiss", "prop_miss")),
-      decimals = pct_deminals
+      decimals = pct_decimals
     ) %>%
     gt::fmt_number(
       columns = dplyr::vars("mean", "sd", "min", "p10", "p25", "p50", "p75", "p90", "max"),
@@ -635,7 +635,7 @@ gt_catnum <- function(
     gt::gt(groupname_col=variable_num) %>%
     gt::fmt_percent(
       columns = tidyselect::ends_with(c("prop_nonmiss", "prop_miss")),
-      decimals = pct_deminals
+      decimals = pct_decimals
     ) %>%
     gt::fmt_number(
       columns = dplyr::vars("mean", "sd", "min", "p10", "p25", "p50", "p75", "p90", "max"),
