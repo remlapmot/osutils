@@ -11,6 +11,7 @@ Description: Contains functions that are often needed when using the
     OpenSAFELY platform, such as redaction and low-memory processing.
 License: MIT + file LICENSE
 URL: https://github.com/wjchulme/osutils
+BugReports: https://github.com/wjchulme/osutils/issues/
 Imports: 
     broom,
     data.table,
