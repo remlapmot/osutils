@@ -1,7 +1,7 @@
 # Functions for saving and loading OS-compliant file types ----
 
 
-#' Write a data frame to a delimited file, and save typing information in a separate json file.
+#' Write a data frame to a delimited file, and save typing information in a separate json file
 #'
 #' @param x A data frame or tibble to write to disk.
 #' @param path File or connection to write to. (path is now deprecated in readr v1.4 for OpenSAFELY currently has older version, so use path for now)
@@ -73,7 +73,7 @@ writetype_delim <- function(
 
 }
 
-#' Write a data frame to a csv file, and save typing information in a separate json file.
+#' Write a data frame to a csv file, and save typing information in a separate json file
 #'
 #' @param x A data frame or tibble to write to disk.
 #' @param path File or connection to write to. (path is now deprecated in readr v1.4 for OpenSAFELY currently has older version, so use path for now).
@@ -111,7 +111,7 @@ writetype_csv <- function(
 }
 
 
-#' Read a delimited file (including CSV and TSV) into a tibble, and type columns using a separate json file.
+#' Read a delimited file (including CSV and TSV) into a tibble, and type columns using a separate json file
 #'
 #' @param file Delimited file location.
 #' @param suffix The suffix used in the name of the json file, which is appended to the delimited file name. Defaults to `""` (no suffix), so that the file name is the same as the delimited file name (excluding filetype extensions).

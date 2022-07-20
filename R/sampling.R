@@ -29,7 +29,7 @@ sample_random_n <- function(id, n){
 
 
 
-#' Sample a proportion of patients (or other observational units) based on patient IDs.
+#' Sample a proportion of patients (or other observational units) based on patient IDs
 #'
 #' @param id An integer patient identifier with the following properties:
 #' - consistent between cohort extracts
