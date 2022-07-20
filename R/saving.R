@@ -140,6 +140,7 @@ writetype_csv <- function(
 #'   to add special characters like `\\n`.
 #' @details Based on the [readr::read_delim] function. Requires delimited files to be saved using [osutils::writetype_delim], which will also create the json file containing the typing info.
 #'  Datetime and time classes are not supported.
+#' @return A [tibble()].
 #' @export
 
 readtype_delim <- function(
@@ -200,6 +201,7 @@ readtype_delim <- function(
 #' @details Based on the [readr::read_csv] function. Requires csv files to be saved using [osutils::writetype_csv], which will also create the json file containing the typing info.
 #'  Datetime and time classes are not supported.
 #' @inheritParams readtype_delim
+#' @return A [tibble()].
 #' @export
 
 readtype_csv <- function(
