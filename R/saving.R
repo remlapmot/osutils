@@ -1,7 +1,7 @@
 # Functions for saving and loading OS-compliant file types ----
 
 
-#' Write a data frame to a delimited file, and save typing information in a separate json file
+#' Write a data frame to a delimited file, and save typing information in a separate json file.
 #'
 #' @param x A data frame or tibble to write to disk.
 #' @param path File or connection to write to. (path is now deprecated in readr v1.4 for OpenSAFELY currently has older version, so use path for now)
@@ -10,7 +10,7 @@
 #' @param na String used for missing values. Defaults to NA. Missing values will never be quoted; strings with the same value as na will always be quoted.
 #' @param quote_escape The type of escaping to use for quoted values, one of "`double`", "`backslash`" or "`none`". You can also use `FALSE`, which is equivalent to "`none`". The default is "`double`", which is expected format for Excel.
 #' @param eol The end of line character to use. Most commonly either "`\n`" for Unix style newlines, or "`\r\n`" for Windows style newlines.
-#' @return Returns the input invisibly
+#' @return Returns the input invisibly.
 #'
 #' @details Based on the [readr::write_delim] function.
 #'  Additionally, this function saves a json file containing typing info for the data frame,
@@ -73,7 +73,7 @@ writetype_delim <- function(
 
 }
 
-#' Write a data frame to a csv file, and save typing information in a separate json file
+#' Write a data frame to a csv file, and save typing information in a separate json file.
 #'
 #' @param x A data frame or tibble to write to disk.
 #' @param path File or connection to write to. (path is now deprecated in readr v1.4 for OpenSAFELY currently has older version, so use path for now).
@@ -81,7 +81,7 @@ writetype_delim <- function(
 #' @param na String used for missing values. Defaults to NA. Missing values will never be quoted; strings with the same value as na will always be quoted.
 #' @param quote_escape The type of escaping to use for quoted values, one of "`double`", "`backslash`" or "`none`". You can also use `FALSE`, which is equivalent to "`none`". The default is "`double`", which is expected format for Excel.
 #' @param eol The end of line character to use. Most commonly either "`\n`" for Unix style newlines, or "`\r\n`" for Windows style newlines.
-#' @return Returns the input invisibly
+#' @return Returns the input invisibly.
 #'
 #' @details Based on the [readr::write_delim] function.
 #'  Additionally, this function saves a json file containing typing info for the data frame,
@@ -111,7 +111,7 @@ writetype_csv <- function(
 }
 
 
-#' Read a delimited file (including CSV and TSV) into a tibble, and type columns using a separate json file
+#' Read a delimited file (including CSV and TSV) into a tibble, and type columns using a separate json file.
 #'
 #' @param file Delimited file location.
 #' @param suffix The suffix used in the name of the json file, which is appended to the delimited file name. Defaults to `""` (no suffix), so that the file name is the same as the delimited file name (excluding filetype extensions).
@@ -171,7 +171,7 @@ readtype_delim <- function(
 }
 
 
-#' Read a csv file into a tibble, and type columns using a separate json file
+#' Read a csv file into a tibble, and type columns using a separate json file.
 #'
 #' @param file Delimited file location.
 #' @param suffix The suffix used in the name of the json file, which is appended to the delimited file name. Defaults to `""` (no suffix), so that the file name is the same as the delimited file name (excluding filetype extensions).
