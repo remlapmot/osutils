@@ -46,7 +46,7 @@ redactor <- function(n, threshold){
 #'  Values are redacted as follows:
 #'    all frequencies less than or equal to the threshold are redacted;
 #'    if the sum the redacted frequencies is also less than or equal to the threshold, then the smallest unredacted frequency is also redacted.
-#'  #' @export
+#' @export
 redactor2 <- function(n, threshold, x=NULL){
 
   stopifnot("non-integer values passed to n" = all(n%%1 == 0L))
