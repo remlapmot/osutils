@@ -12,6 +12,7 @@ Description: Contains functions that are often needed when using the
 License: MIT + file LICENSE
 Imports: 
     broom,
+    data.table,
     dplyr,
     forcats,
     fs,
