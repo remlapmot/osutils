@@ -25,6 +25,7 @@ Sample a proportion of patients (or other observational units) based on patient 
 }
 \details{
 Result is \code{TRUE} with probability \code{p} and \code{FALSE} with probability \code{1-p}.
-\code{p} is equal to \code{ceiling(length(id)*proportion)/length(id)}, which is equal to \code{proportion} when \code{length(id)*proportion} is an integer, and slightly higher otherwise.
+\code{p} is equal to \cr \code{ceiling(length(id)*proportion)/length(id)}, which is equal to \code{proportion} when
+\cr \code{length(id)*proportion} is an integer, and slightly higher otherwise.
 Patients are selected in ascending order of patient ID until the sampling proportion is met.
 }
