@@ -2,7 +2,7 @@
 % Please edit documentation in R/redaction.R
 \name{gt_catcat}
 \alias{gt_catcat}
-\title{Convert output of categorical cross-tabulation (redact_summary_cat_cat) to gt object}
+\title{Convert output of categorical cross-tabulation (\link{redacted_summary_catcat}) to gt object}
 \usage{
 gt_catcat(
   x,
@@ -14,24 +14,24 @@ gt_catcat(
 )
 }
 \arguments{
-\item{x}{The data.frame produced by \code{redact_summary_catcat}}
+\item{x}{The data.frame produced by \link{redacted_summary_catcat}.}
 
-\item{var1_name}{The name of the first categorical variable}
+\item{var1_name}{The name of the first categorical variable.}
 
-\item{var2_name}{The name of the second categorical variable}
+\item{var2_name}{The name of the second categorical variable.}
 
-\item{title}{The title of the table}
+\item{title}{The title of the table.}
 
-\item{source_note}{A footnote}
+\item{source_note}{A footnote.}
 
-\item{pct_decimals}{Decimal precision for percentages}
+\item{pct_decimals}{Decimal precision for percentages.}
 }
 \value{
-A gt object
+A gt object.
 }
 \description{
-Convert output of categorical cross-tabulation (redact_summary_cat_cat) to gt object
+Convert output of categorical cross-tabulation (\link{redacted_summary_catcat}) to gt object
 }
 \details{
-This function takes the output of \code{redact_summary_catcat} and converts it to a gt object (as from the \code{gt} package) for outputting to html/pdf.
+This function takes the output of \link{redacted_summary_catcat} and converts it to a gt object (as from the gt package) for outputting to html/pdf.
 }

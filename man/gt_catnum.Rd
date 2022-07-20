@@ -2,27 +2,27 @@
 % Please edit documentation in R/redaction.R
 \name{gt_catnum}
 \alias{gt_catnum}
-\title{Convert output of categorical-numeric cross-tabulation (redact_summary_catnum) to gt object}
+\title{Convert output of categorical-numeric cross-tabulation (\link{redacted_summary_catnum}) to gt object}
 \usage{
 gt_catnum(x, cat_name = "", num_name = "", num_decimals = 1, pct_decimals = 1)
 }
 \arguments{
-\item{x}{The data.frame produced by \code{redact_summary_catnum}}
+\item{x}{The data.frame produced by \link{redacted_summary_catnum}.}
 
-\item{cat_name}{The categorical variable name}
+\item{cat_name}{The categorical variable name.}
 
-\item{num_name}{The numeric variable name}
+\item{num_name}{The numeric variable name.}
 
-\item{num_decimals}{Decimal precision for numbers}
+\item{num_decimals}{Decimal precision for numbers.}
 
-\item{pct_decimals}{Decimal precision for percentages}
+\item{pct_decimals}{Decimal precision for percentages.}
 }
 \value{
-A gt object
+A gt object.
 }
 \description{
-Convert output of categorical-numeric cross-tabulation (redact_summary_catnum) to gt object
+Convert output of categorical-numeric cross-tabulation (\link{redacted_summary_catnum}) to gt object
 }
 \details{
-This function takes the output of \code{redact_summary_catnum} and converts it to a gt object (as from the \code{gt} package) for outputting to html/pdf.
+This function takes the output of \link{redacted_summary_catnum} and converts it to a gt object (as from the gt package) for outputting to html/pdf.
 }

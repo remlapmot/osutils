@@ -2,7 +2,7 @@
 % Please edit documentation in R/saving.R
 \name{writetype_delim}
 \alias{writetype_delim}
-\title{Write a data frame to a delimited file, and save typing information in a separate json file}
+\title{Write a data frame to a delimited file, and save typing information in a separate json file.}
 \usage{
 writetype_delim(
   x,
@@ -23,22 +23,22 @@ writetype_delim(
 
 \item{delim}{Delimiter used to separate values.}
 
-\item{na}{String used for missing values. Defaults to NA. Missing values will never be quoted; strings with the same value as na will always be quoted.}
+\item{na}{String used for missing values. Defaults to \code{"NA"}. Missing values will never be quoted; strings with the same value as \code{na} will always be quoted.}
 
 \item{quote_escape}{The type of escaping to use for quoted values, one of "\code{double}", "\code{backslash}" or "\code{none}". You can also use \code{FALSE}, which is equivalent to "\code{none}". The default is "\code{double}", which is expected format for Excel.}
 
 \item{eol}{The end of line character to use. Most commonly either "\verb{\\n}" for Unix style newlines, or "\verb{\\r\\n}" for Windows style newlines.}
 }
 \value{
-Returns the input invisibly
+Returns the input invisibly.
 }
 \description{
-Write a data frame to a delimited file, and save typing information in a separate json file
+Write a data frame to a delimited file, and save typing information in a separate json file.
 }
 \details{
-Based on the readr::write_delim function.
+Based on the \link[readr:write_delim]{readr::write_delim} function.
 Additionally, this function saves a json file containing typing info for the data frame,
 which can be used to re-type the data when re-imported into R.
-Some further read_delim options are deliberately unavailable as they won't make sense for files intended for re-importing.
+Some further \link[readr:write_delim]{readr::write_delim} options are deliberately unavailable as they won't make sense for files intended for re-importing.
 Datetime and time classes are not supported.
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/saving.R
 \name{writetype_csv}
 \alias{writetype_csv}
-\title{Write a data frame to a csv file, and save typing information in a separate json file}
+\title{Write a data frame to a csv file, and save typing information in a separate json file.}
 \usage{
 writetype_csv(
   x,
@@ -20,20 +20,20 @@ writetype_csv(
 
 \item{suffix}{The suffix used in the name of the json file, to be appended to the delimited file name. Defaults to \code{""} (no suffix), so that the file name is the same as the delimited file name (excluding filetype extensions).}
 
-\item{na}{String used for missing values. Defaults to NA. Missing values will never be quoted; strings with the same value as na will always be quoted.}
+\item{na}{String used for missing values. Defaults to \code{"NA"}. Missing values will never be quoted; strings with the same value as \code{na} will always be quoted.}
 
 \item{quote_escape}{The type of escaping to use for quoted values, one of "\code{double}", "\code{backslash}" or "\code{none}". You can also use \code{FALSE}, which is equivalent to "\code{none}". The default is "\code{double}", which is expected format for Excel.}
 
 \item{eol}{The end of line character to use. Most commonly either "\verb{\\n}" for Unix style newlines, or "\verb{\\r\\n}" for Windows style newlines.}
 }
 \value{
-Returns the input invisibly
+Returns the input invisibly.
 }
 \description{
-Write a data frame to a csv file, and save typing information in a separate json file
+Write a data frame to a csv file, and save typing information in a separate json file.
 }
 \details{
-Based on the readr::write_delim function.
+Based on the \link[readr:write_delim]{readr::write_delim} function.
 Additionally, this function saves a json file containing typing info for the data frame,
 which can be used to re-type the data when re-imported into R.
 Datetime and time classes are not supported.

@@ -17,5 +17,5 @@ Converts a json file of codelist names and URLs into an HTML table
 }
 \details{
 This function currently only exports an HTML file but it can be adapted to output text, markdown, etc.
-Ideally this would be an in-build OpenSAFELY feature rather than written externally in R.
+Ideally this would be an in-built OpenSAFELY feature rather than written externally in R.
 }

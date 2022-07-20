@@ -24,7 +24,7 @@ redacted_summary_catnum(
 \item{.redacted_name}{The string used to replace redacted values.}
 }
 \value{
-A table of summary statistics for the numeric variable, stratified by the cateogrical variable
+A table of summary statistics for the numeric variable, stratified by the categorical variable
 }
 \description{
 Categorical by numeric cross-tabulation, with redaction if necessary
