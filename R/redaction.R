@@ -827,7 +827,3 @@ round_km <- function(data, time, event, strata=NULL, threshold=6){
 
   dat_surv_rounded
 }
-
-
-
-
