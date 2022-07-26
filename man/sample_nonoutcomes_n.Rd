@@ -27,7 +27,7 @@ Sample patients (or other observational units) based on patient IDs, depending o
 }
 \details{
 If \code{had_outcome} is \code{TRUE} then result is always \code{TRUE}.
-If \code{had_outcome} is \code{FALSE}, then result is \code{TRUE} with probability \code{max(1,n/sum(1-had_outcome))} and \code{FALSE} with probability \code{min(0, 1 - n/sum(1-had_outcome))}.
+If \code{had_outcome} is \code{FALSE}, then result is \code{TRUE} with probability \code{max(1,n/sum(1-had_outcome))} and \code{FALSE} with probability \cr \code{min(0, 1 - n/sum(1-had_outcome))}.
 Patients are selected in ascending order of patient ID until the sampling number is met.
 Warns (does not fail) if \code{n} is greater than \code{sum(1-had_outcome)}.
 }

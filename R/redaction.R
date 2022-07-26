@@ -46,7 +46,7 @@ redactor <- function(n, threshold){
 #'  Values are redacted as follows:
 #'    all frequencies less than or equal to the threshold are redacted;
 #'    if the sum the redacted frequencies is also less than or equal to the threshold, then the smallest unredacted frequency is also redacted.
-#'  #' @export
+#' @export
 redactor2 <- function(n, threshold, x=NULL){
 
   stopifnot("non-integer values passed to n" = all(n%%1 == 0L))
@@ -374,7 +374,7 @@ redacted_summary_date <- function(x, threshold=5L, .redacted_name="redacted"){
 #' @param threshold The redaction threshold. If the length of `x` is less than or equal to this threshold, then no summary values will be reported.
 #' @param .missing_name The string used to replace `NA` categories.
 #' @param .redacted_name The string used to replace redacted values.
-#' @return A table of summary statistics for the numeric variable, stratified by the cateogrical variable
+#' @return A table of summary statistics for the numeric variable, stratified by the categorical variable
 #'
 #' @details This function takes a categorical vector and a numeric vector of the same length, and performs a cross-tabulation. Summary statistics are redacted according to the rules in \code{\link{redactor}}.
 #'
@@ -433,14 +433,14 @@ redacted_summary_catnum <- function(
 # functions to convert redacted sumary tables to gt objects ----
 
 
-#' Convert output of categorical tabulation (redact_summary_cat) to gt object
+#' Convert output of categorical tabulation ([redacted_summary_cat]) to gt object
 #'
-#' @param x The data.frame produced by `redact_summary_cat`
-#' @param var_name The variable name
-#' @param pct_decimals Decimal precision for percentages
-#' @return A gt object
+#' @param x The data.frame produced by [redacted_summary_cat].
+#' @param var_name The variable name.
+#' @param pct_decimals Decimal precision for percentages.
+#' @return A gt object.
 #'
-#' @details This function takes the output of `redact_summary_cat` and converts it to a gt object (as from the `gt` package) for outputting to html/pdf.
+#' @details This function takes the output of [redacted_summary_cat] and converts it to a gt object (as from the gt package) for outputting to html/pdf.
 #'
 #' @export
 gt_cat <- function(
@@ -454,7 +454,7 @@ gt_cat <- function(
     gt::gt() %>%
     gt::fmt_percent(
       columns = tidyselect::ends_with(c("prop", "prop_nonmiss")),
-      decimals = pct_deminals
+      decimals = pct_decimals
     ) %>%
     gt::fmt_missing(
       tidyselect::everything(),
@@ -478,17 +478,17 @@ gt_cat <- function(
 }
 
 
-#' Convert output of categorical cross-tabulation (redact_summary_cat_cat) to gt object
+#' Convert output of categorical cross-tabulation ([redacted_summary_catcat]) to gt object
 #'
-#' @param x The data.frame produced by `redact_summary_catcat`
-#' @param var1_name The name of the first categorical variable
-#' @param var2_name The name of the second categorical variable
-#' @param title The title of the table
-#' @param source_note A footnote
-#' @param pct_decimals Decimal precision for percentages
-#' @return A gt object
+#' @param x The data.frame produced by [redacted_summary_catcat].
+#' @param var1_name The name of the first categorical variable.
+#' @param var2_name The name of the second categorical variable.
+#' @param title The title of the table.
+#' @param source_note A footnote.
+#' @param pct_decimals Decimal precision for percentages.
+#' @return A gt object.
 #'
-#' @details This function takes the output of `redact_summary_catcat` and converts it to a gt object (as from the `gt` package) for outputting to html/pdf.
+#' @details This function takes the output of [redacted_summary_catcat] and converts it to a gt object (as from the gt package) for outputting to html/pdf.
 #'
 #' @export
 gt_catcat <- function(
@@ -580,7 +580,7 @@ gt_num <- function(
     gt::gt() %>%
     gt::fmt_percent(
       columns = tidyselect::ends_with(c("prop_nonmiss", "prop_miss")),
-      decimals = pct_deminals
+      decimals = pct_decimals
     ) %>%
     gt::fmt_number(
       columns = dplyr::vars("mean", "sd", "min", "p10", "p25", "p50", "p75", "p90", "max"),
@@ -610,16 +610,16 @@ gt_num <- function(
 }
 
 
-#' Convert output of categorical-numeric cross-tabulation (redact_summary_catnum) to gt object
+#' Convert output of categorical-numeric cross-tabulation ([redacted_summary_catnum]) to gt object
 #'
-#' @param x The data.frame produced by `redact_summary_catnum`
-#' @param cat_name The categorical variable name
-#' @param num_name The numeric variable name
-#' @param num_decimals Decimal precision for numbers
-#' @param pct_decimals Decimal precision for percentages
-#' @return A gt object
+#' @param x The data.frame produced by [redacted_summary_catnum].
+#' @param cat_name The categorical variable name.
+#' @param num_name The numeric variable name.
+#' @param num_decimals Decimal precision for numbers.
+#' @param pct_decimals Decimal precision for percentages.
+#' @return A gt object.
 #'
-#' @details This function takes the output of `redact_summary_catnum` and converts it to a gt object (as from the `gt` package) for outputting to html/pdf.
+#' @details This function takes the output of [redacted_summary_catnum] and converts it to a gt object (as from the gt package) for outputting to html/pdf.
 #'
 #' @export
 gt_catnum <- function(
@@ -635,7 +635,7 @@ gt_catnum <- function(
     gt::gt(groupname_col=variable_num) %>%
     gt::fmt_percent(
       columns = tidyselect::ends_with(c("prop_nonmiss", "prop_miss")),
-      decimals = pct_deminals
+      decimals = pct_decimals
     ) %>%
     gt::fmt_number(
       columns = dplyr::vars("mean", "sd", "min", "p10", "p25", "p50", "p75", "p90", "max"),
@@ -827,7 +827,3 @@ round_km <- function(data, time, event, strata=NULL, threshold=6){
 
   dat_surv_rounded
 }
-
-
-
-

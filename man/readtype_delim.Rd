@@ -21,13 +21,47 @@ readtype_delim(
 \arguments{
 \item{file}{Delimited file location.}
 
-\item{suffix}{#' @param suffix The suffix used in the name of the json file, which is appended to the delimited file name. Defaults to \code{""} (no suffix), so that the file name is the same as the delimited file name (excluding filetype extensions).}
+\item{suffix}{The suffix used in the name of the json file, which is appended to the delimited file name. Defaults to \code{""} (no suffix), so that the file name is the same as the delimited file name (excluding filetype extensions).}
+
+\item{delim}{Single character used to separate fields within a record.}
+
+\item{quote}{Single character used to quote strings.}
+
+\item{escape_backslash}{Does the file use backslashes to escape special
+characters? This is more general than \code{escape_double} as backslashes
+can be used to escape the delimiter character, the quote character, or
+to add special characters like \verb{\\\\n}.}
+
+\item{escape_double}{Does the file escape quotes by doubling them?
+i.e. If this option is \code{TRUE}, the value \verb{""""} represents
+a single quote, \verb{\\"}.}
+
+\item{locale}{The locale controls defaults that vary from place to place.
+The default locale is US-centric (like R), but you can use
+\code{\link[=locale]{locale()}} to create your own locale that controls things like
+the default time zone, encoding, decimal mark, big mark, and day/month
+names.}
+
+\item{na}{Character vector of strings to interpret as missing values. Set this
+option to \code{character()} to indicate no missing values.}
+
+\item{quoted_na}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} Should missing values
+inside quotes be treated as missing values (the default) or strings. This
+parameter is soft deprecated as of readr 2.0.0.}
+
+\item{comment}{A string used to identify comments. Any text after the
+comment characters will be silently ignored.}
+
+\item{trim_ws}{Should leading and trailing whitespace (ASCII spaces and tabs) be trimmed from
+each field before parsing it?}
+}
+\value{
+A \code{\link[=tibble]{tibble()}}.
 }
 \description{
 Read a delimited file (including CSV and TSV) into a tibble, and type columns using a separate json file
 }
 \details{
-Based on the readr::read_delim function. Requires delimited files to be saved using osutils::write_delim, which will also create the json file containing the typing info.
-See readr::read_csv for additional parameter details
+Based on the \link[readr:read_delim]{readr::read_delim} function. Requires delimited files to be saved using \link{writetype_delim}, which will also create the json file containing the typing info.
 Datetime and time classes are not supported.
 }

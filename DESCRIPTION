@@ -1,34 +1,40 @@
 Package: osutils
-Title: Useful functions for OpenSAFELY
+Title: Useful Functions for OpenSAFELY
 Version: 0.0.0.9000
-Authors@R: 
-    person(given = "William",
-           family = "Hulme",
-           role = c("aut", "cre"),
-           email = "william.hulme@phc.ox.ac.uk",
-           comment = c(ORCID = "0000-0002-9162-4999"))
-Description: Contains functions that are often needed when using the OpenSAFELY platform, such as redaction and low-memory processing.
+Authors@R: c(
+    person("William", "Hulme", , "william.hulme@phc.ox.ac.uk", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-9162-4999")),
+    person("Tom", "Palmer", , "remlapmot@hotmail.com", role = "aut",
+           comment = c(ORCID = "0000-0003-4655-4511"))
+  )
+Description: Contains functions that are often needed when using the
+    OpenSAFELY platform <https://www.opensafely.org/>, such as redaction
+    and low-memory processing.
 License: MIT + file LICENSE
+URL: https://github.com/wjchulme/osutils
+BugReports: https://github.com/wjchulme/osutils/issues/
 Imports: 
-    stats,
-    rlang,
-    fs,
-    readr,
-    tibble,
-    dplyr,
-    tidyr,
-    tidyselect,
-    purrr,
-    stringr,
-    forcats,
     broom,
-    plyr,
+    data.table,
+    dplyr,
+    forcats,
+    fs,
     gt,
-    jsonlite
-Encoding: UTF-8
-LazyData: true
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+    jsonlite,
+    lifecycle,
+    magrittr,
+    plyr,
+    purrr,
+    readr,
+    rlang,
+    stats,
+    stringr,
+    tibble,
+    tidyr,
+    tidyselect
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.1

@@ -12,5 +12,3 @@ test_that("all IDs are sampled", {
   expect_equal(sample_nonoutcomes_n(c(0,0,0,0,1,1), c(1,2,3,4,5,6), 6), c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE))
   expect_equal(sample_nonoutcomes_prop(c(0,0,0,0,1,1), c(1,2,3,4,5,6), 1), c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE))
 })
-
-

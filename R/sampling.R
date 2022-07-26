@@ -29,7 +29,7 @@ sample_random_n <- function(id, n){
 
 
 
-#' Sample a proportion of patients (or other observational units) based on patient IDs.
+#' Sample a proportion of patients (or other observational units) based on patient IDs
 #'
 #' @param id An integer patient identifier with the following properties:
 #' - consistent between cohort extracts
@@ -40,7 +40,8 @@ sample_random_n <- function(id, n){
 #' @return A logical vector indicating whether the patient has been sampled or not
 #'
 #' @details Result is `TRUE` with probability `p` and `FALSE` with probability `1-p`.
-#' `p` is equal to `ceiling(length(id)*proportion)/length(id)`, which is equal to `proportion` when `length(id)*proportion` is an integer, and slightly higher otherwise.
+#' `p` is equal to \cr `ceiling(length(id)*proportion)/length(id)`, which is equal to `proportion` when
+#' \cr `length(id)*proportion` is an integer, and slightly higher otherwise.
 #' Patients are selected in ascending order of patient ID until the sampling proportion is met.
 #' @export
 sample_random_prop <- function(id, proportion){
@@ -68,7 +69,7 @@ sample_random_prop <- function(id, proportion){
 #' @return A logical vector indicating whether the patient has been sampled or not
 #'
 #' @details If `had_outcome` is `TRUE` then result is always `TRUE`.
-#' If `had_outcome` is `FALSE`, then result is `TRUE` with probability `max(1,n/sum(1-had_outcome))` and `FALSE` with probability `min(0, 1 - n/sum(1-had_outcome))`.
+#' If `had_outcome` is `FALSE`, then result is `TRUE` with probability `max(1,n/sum(1-had_outcome))` and `FALSE` with probability \cr `min(0, 1 - n/sum(1-had_outcome))`.
 #' Patients are selected in ascending order of patient ID until the sampling number is met.
 #' Warns (does not fail) if `n` is greater than `sum(1-had_outcome)`.
 #' @export

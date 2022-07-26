@@ -25,5 +25,4 @@ If \code{x} is not \code{NULL}, values in \code{x} are redacted according to fre
 Values are redacted as follows:
 all frequencies less than or equal to the threshold are redacted;
 if the sum the redacted frequencies is also less than or equal to the threshold, then the smallest unredacted frequency is also redacted.
-#' @export
 }

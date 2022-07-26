@@ -2,23 +2,23 @@
 % Please edit documentation in R/redaction.R
 \name{gt_cat}
 \alias{gt_cat}
-\title{Convert output of categorical tabulation (redact_summary_cat) to gt object}
+\title{Convert output of categorical tabulation (\link{redacted_summary_cat}) to gt object}
 \usage{
 gt_cat(x, var_name = "", pct_decimals = 1)
 }
 \arguments{
-\item{x}{The data.frame produced by \code{redact_summary_cat}}
+\item{x}{The data.frame produced by \link{redacted_summary_cat}.}
 
-\item{var_name}{The variable name}
+\item{var_name}{The variable name.}
 
-\item{pct_decimals}{Decimal precision for percentages}
+\item{pct_decimals}{Decimal precision for percentages.}
 }
 \value{
-A gt object
+A gt object.
 }
 \description{
-Convert output of categorical tabulation (redact_summary_cat) to gt object
+Convert output of categorical tabulation (\link{redacted_summary_cat}) to gt object
 }
 \details{
-This function takes the output of \code{redact_summary_cat} and converts it to a gt object (as from the \code{gt} package) for outputting to html/pdf.
+This function takes the output of \link{redacted_summary_cat} and converts it to a gt object (as from the gt package) for outputting to html/pdf.
 }

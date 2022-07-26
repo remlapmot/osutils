@@ -2,7 +2,7 @@
 % Please edit documentation in R/sampling.R
 \name{sample_random_prop}
 \alias{sample_random_prop}
-\title{Sample a proportion of patients (or other observational units) based on patient IDs.}
+\title{Sample a proportion of patients (or other observational units) based on patient IDs}
 \usage{
 sample_random_prop(id, proportion)
 }
@@ -21,10 +21,11 @@ sample_random_prop(id, proportion)
 A logical vector indicating whether the patient has been sampled or not
 }
 \description{
-Sample a proportion of patients (or other observational units) based on patient IDs.
+Sample a proportion of patients (or other observational units) based on patient IDs
 }
 \details{
 Result is \code{TRUE} with probability \code{p} and \code{FALSE} with probability \code{1-p}.
-\code{p} is equal to \code{ceiling(length(id)*proportion)/length(id)}, which is equal to \code{proportion} when \code{length(id)*proportion} is an integer, and slightly higher otherwise.
+\code{p} is equal to \cr \code{ceiling(length(id)*proportion)/length(id)}, which is equal to \code{proportion} when
+\cr \code{length(id)*proportion} is an integer, and slightly higher otherwise.
 Patients are selected in ascending order of patient ID until the sampling proportion is met.
 }
