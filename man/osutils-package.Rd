@@ -6,7 +6,9 @@
 \alias{osutils-package}
 \title{osutils: Useful Functions for OpenSAFELY}
 \description{
-Contains functions that are often needed when using the OpenSAFELY platform \url{https://www.opensafely.org/}, such as redaction and low-memory processing.
+Contains functions that are often needed when using the
+    OpenSAFELY platform <https://www.opensafely.org/>, such as redaction
+    and low-memory processing.
 }
 \seealso{
 Useful links:
